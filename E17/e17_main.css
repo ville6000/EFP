@@ -1,0 +1,7 @@
+html {
+    overflow-y: scroll;
+}
+
+.ng-submitted input.ng-invalid {
+    border: 1px solid red;
+}
