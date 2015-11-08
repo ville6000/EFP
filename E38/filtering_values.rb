@@ -9,7 +9,14 @@ class FilteringValues
     numbers_string.split(/ /).map { |n| n.to_i }
   end
 
+  # Constraints
+  # Don't rely on language's built-in filter or similar enumeration feature
   def filter_even_numbers(numbers)
-    numbers.reject { |n| n.odd? }
+    even_numbers = Array.new
+    numbers.each do |num|
+      even_numbers.push(num) if (num % 2 == 0)
+    end
+
+    even_numbers
   end
 end
