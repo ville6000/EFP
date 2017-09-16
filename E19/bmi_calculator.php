@@ -1,9 +1,21 @@
 <?php
-echo "Please input your height in inches: ";
-$height = (int)fgets(STDIN);
+$has_valid_values = false;
+$height = false;
+$weight = false;
 
-echo "Please input your weight in pounds: ";
-$weight = (int)fgets(STDIN);
+while ($has_valid_values === false) {
+    if (!$height) {
+        $height = askHeight();
+    }
+
+    if (!$weight) {
+        $weight = askWeight();
+    }
+
+    if ($weight && $height) {
+        $has_valid_values = true;
+    }
+}
 
 $bmi = calculateBMI($weight, $height);
 
@@ -19,6 +31,16 @@ if (isInNormalRange($bmi)) {
     }
 
     echo "You should see a doctor.";
+}
+
+function askHeight() {
+    echo "Please input your height in inches: ";
+    return (int) fgets(STDIN);
+}
+
+function askWeight() {
+    echo "Please input your weight in pounds: ";
+    return (int) fgets(STDIN);
 }
 
 function calculateBMI($weight, $height) {
