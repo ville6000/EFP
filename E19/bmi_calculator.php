@@ -1,36 +1,46 @@
 <?php
-$has_valid_values = false;
-$height = false;
-$weight = false;
 
-while ($has_valid_values === false) {
-    if (!$height) {
-        $height = askHeight();
-    }
-
-    if (!$weight) {
-        $weight = askWeight();
-    }
-
-    if ($weight && $height) {
-        $has_valid_values = true;
-    }
+function run() {
+    $bmi = getBMI();
+    outputResults($bmi);
 }
 
-$bmi = calculateBMI($weight, $height);
+function getBMI() {
+    $has_valid_values = false;
+    $height = false;
+    $weight = false;
 
-echo "\nYour BMI is " . round($bmi, 1) . "\n";
+    while ($has_valid_values === false) {
+        if (!$height) {
+            $height = askHeight();
+        }
 
-if (isInNormalRange($bmi)) {    
-    echo "You are within the ideal range. \n";
-} else {
-    if ($bmi < 18.5) {
-        echo "You are underweight. ";
-    } else {
-        echo "You are overweight. ";
+        if (!$weight) {
+            $weight = askWeight();
+        }
+
+        if ($weight && $height) {
+            $has_valid_values = true;
+        }
     }
 
-    echo "You should see a doctor.";
+    return calculateBMI($weight, $height);
+}
+
+function outputResults($bmi) {
+    echo "\nYour BMI is " . round($bmi, 1) . "\n";
+
+    if (isInNormalRange($bmi)) {    
+        echo "You are within the ideal range. \n";
+    } else {
+        if ($bmi < 18.5) {
+            echo "You are underweight. ";
+        } else {
+            echo "You are overweight. ";
+        }
+
+        echo "You should see a doctor.";
+    }
 }
 
 function askHeight() {
@@ -50,3 +60,5 @@ function calculateBMI($weight, $height) {
 function isInNormalRange($bmi) {
     return ($bmi > 18.5 && $bmi < 25);
 }
+
+run();
