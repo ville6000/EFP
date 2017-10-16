@@ -1,37 +1,28 @@
 <?php
 
 echo 'Please enter the number of the month: ';
-$number_of_the_month = fgets(STDIN);
+$number_of_the_month = (int) fgets(STDIN);
 
-switch ($number_of_the_month) {
-    case 1: $month = 'January';
-        break;
-    case 2: $month = 'February';
-        break; 
-    case 3: $month = 'March';
-        break; 
-    case 4: $month = 'April';
-        break; 
-    case 5: $month = 'May';
-        break; 
-    case 6: $month = 'June';
-        break; 
-    case 7: $month = 'July';
-        break; 
-    case 8: $month = 'August';
-        break; 
-    case 9: $month = 'September';
-        break; 
-    case 10: $month = 'October';
-        break; 
-    case 11: $month = 'November';
-        break; 
-    case 12: $month = 'December';
-        break; 
-    default:
-        $month = false;
-        break;
+$months = [
+    1 => 'January',
+    2 => 'February',
+    3 => 'March',
+    4 => 'April',
+    5 => 'May',
+    6 => 'June',
+    7 => 'July',
+    8 => 'August',
+    9 => 'September',
+    10 => 'October',
+    11 => 'November',
+    12 => 'December',
+];
+
+if (isset($months[$number_of_the_month])) {
+    $month_name = $months[$number_of_the_month];
+} else {
+    $month_name = false;
 }
 
-echo ($month) ? "The name of the month is $month." : 'Invalid input value';
+echo ($month_name) ? "The name of the month is $month_name." : 'Invalid input value';
 
