@@ -10,6 +10,18 @@ class PasswordStrengthIndicator {
     const MIN_LENGTH_FOR_STRONG = 8;
 
     public function passwordValidator($password) {
+        $status = $this->doValidatePassword($password);
+        $password_statuses = [
+            1 => 'very weak password',
+            2 => 'weak password',
+            3 => 'strong password',
+            4 => 'very strong password'
+        ];
+
+        echo "The password '$password' is $password_statuses[$status].";
+    }
+
+    public function doValidatePassword($password) {
         $is_min_length_for_strong = strlen(trim($password)) >= self::MIN_LENGTH_FOR_STRONG;
 
         if (!$is_min_length_for_strong) {

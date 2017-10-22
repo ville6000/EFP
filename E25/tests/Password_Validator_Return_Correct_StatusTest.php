@@ -20,9 +20,9 @@ class Password_Validator_Return_Correct_StatusTest extends \Codeception\Test\Uni
     {
         $validator = new PasswordStrengthIndicator();
 
-        $this->assertEquals(1, $validator->passwordValidator(123));
-        $this->assertEquals(2, $validator->passwordValidator('asdf1'));
-        $this->assertEquals(3, $validator->passwordValidator('abcdefg1'));
-        $this->assertEquals(4, $validator->passwordValidator('abcdefg1@'));
+        $this->assertEquals(1, $validator->doValidatePassword(123));
+        $this->assertEquals(2, $validator->doValidatePassword('asdf1'));
+        $this->assertEquals(3, $validator->doValidatePassword('abcdefg1'));
+        $this->assertEquals(4, $validator->doValidatePassword('abcdefg1@'));
     }
 }
